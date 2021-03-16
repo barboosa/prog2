@@ -1,20 +1,16 @@
-# Film Bewertungsdatenbank
+# Film Datenbank
 ## Ausgangslage
-Ich schaue in meiner Freizeit viele verschiedene Filme und tausche dies mit meinen Kollegen aus. Leider mach ich das aber in meinen Notizen, dies sollte auch einfacher gehen.
 
 ## Funktion/Projektidee
-Eine Filmdatenbank in welcher man Filme abspeichern kann und eine Bewertung dazu schreiben kann.
+Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
+* Erfassen von Filme in der Datenbank
+* Übersicht aller in der Datenbank befundenen Filme
+* Filme nach Name mittels einer "Search Bar" suchen
+* Filmvorschlag Funktion: Vorschläge anhand von Angaben verschiedener Parameter (Schauspieler, Kategorie, usw.)
 
 ## Workflow
 ### Dateneingabe
-- Film Name
-- Bewertung (1-5)
-- Bewertung in Textform
 
 ### Datenverarbeitung/Speicherung
-- Daten werden zusammengefasst und gespeichert
-- Objekt mit Film Informationen
-    - Zusätzliche Bewertungen werden als Unterobjekt angehängt
 
 ### Datenausgabe
-- Ausgabe aller Filme in der Datenbank (Text File), mit durchschnittlicher Bewertung
