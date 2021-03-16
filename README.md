@@ -7,6 +7,7 @@ Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
 * Übersicht aller in der Datenbank befundenen Filme
 * Filme nach Name mittels einer "Search Bar" suchen
 * Filmvorschlag Funktion: Vorschläge anhand von Angaben verschiedener Parameter (Schauspieler, Kategorie, usw.)
+* Optional: Bewertung auf Film hinzufügen
 
 ## Workflow
 ### Dateneingabe
