@@ -9,6 +9,9 @@ Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
 * Filmvorschlag Funktion: Vorschläge anhand von Angaben verschiedener Parameter (Schauspieler, Genre, usw.)
 * Optional: Bewertung auf Film hinzufügen
 
+## Data
+The used movie data comes from 
+
 ## Workflow
 ### Dateneingabe
 
