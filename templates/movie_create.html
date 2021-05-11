@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Film erfassen</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="Title">Titel</label>
+            <input type="text" class="form-control" id="Title" name="Title">
+        </div>
+        <div class="form-group">
+            <label for="Plot">Handlung</label>
+            <textarea class="form-control" id="Plot" name="Plot" rows="5" placeholder="Die Handlung des Films"></textarea>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Genre">Genre</label>
+                    <input type="text" class="form-control" id="Genre" name="Genre">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Year">Jahr</label>
+                    <input type="text" class="form-control" id="Year" name="Year">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Director">Regisseur</label>
+                    <input type="text" class="form-control" id="Director" name="Director">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Actors">Schauspieler</label>
+                    <input type="text" class="form-control" id="Actors" name="Actors">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
