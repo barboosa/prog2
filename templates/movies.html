@@ -2,6 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <h1>Filme</h1>
+    {% if movies %}
     <table class="table clickable-table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -20,6 +21,9 @@
             {% endfor %}
         </tbody>
     </table>
+   {% else %}
+    <p>Kein Eintrag vorhanden..</p>
+   {% endif %}
     <a class="btn btn-primary" href="{{ url_for('movie_create')}}" role="button">Film erfassen</a>
     <script>
         $(document).ready(function(){
