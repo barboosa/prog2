@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for
 from flask import render_template
-import movies as mv
+import movie as mv
 
 app = Flask("Hello World")
 
@@ -22,8 +22,8 @@ def movie_by_id(movie_id):
 def movie_create():
     if request.method == 'POST':
         movie_create_data = request.form.to_dict()
-        movie = mv.save_movie(movie_create_data)
-        return movie_create_data
+        mv.save_movie(movie_create_data)
+        return redirect(url_for('movies'))
     return render_template('movie_create.html')
 
 @app.route('/search')
