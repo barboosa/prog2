@@ -1,14 +1,20 @@
 import json
 
+
 def save(data):
     with open('./data/movies.json', 'w') as json_file:
         json_dump = json.dumps(data)
         json_file.write(json_dump)
 
+
 def load_movie_data():
-    with open('./data/movies.json') as json_file:
-        movies = json.load(json_file)
+    try:
+        with open('./data/movies.json') as json_file:
+            movies = json.load(json_file)
+    except:
+        movies = []
     return movies
+
 
 def load_movie_data_by_id(movie_id):
     movie = {}
@@ -16,7 +22,7 @@ def load_movie_data_by_id(movie_id):
     for m in movies:
         if m['Id'] == int(movie_id):
             movie = m
-        break
+            break
     return movie
 
 
@@ -26,7 +32,3 @@ def save_movie(movie_create_data):
     movie_create_data["Id"] = new_id
     movies.append(movie_create_data)
     save(movies)
-
-
-
-
