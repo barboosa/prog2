@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, url_for
 from flask import render_template
 import movie as mv
 
-app = Flask("Hello World")
+app = Flask("Movie Database")
 
 @app.route('/')
 def index():
