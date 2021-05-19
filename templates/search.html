@@ -1,5 +1,40 @@
 {% extends 'layout.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Suche{% endblock %}
 {% block content %}
     <h1>Suche</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="Title">Titel</label>
+            <input type="text" class="form-control" id="Title" name="Title">
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Genre">Genre</label>
+                    <input type="text" class="form-control" id="Genre" name="Genre">
+                </div>
+            </div>
+            <div class="col mt-2">
+                <div class="form-group">
+                    <label for="Year">Jahr</label>
+                    <input type="text" class="form-control" id="Year" name="Year">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Director">Regisseur</label>
+                    <input type="text" class="form-control" id="Director" name="Director">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Actors">Schauspieler</label>
+                    <input type="text" class="form-control" id="Actors" name="Actors">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Suchen</button>
+    </form>
 {% endblock %}

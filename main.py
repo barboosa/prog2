@@ -26,8 +26,12 @@ def movie_create():
         return redirect(url_for('movies'))
     return render_template('movie_create.html')
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 def search():
+    if request.method == 'POST':
+        search_inputs = request.form.to_dict()
+        movies = mv.search_movie(search_inputs)
+        return render_template('movies.html', movies=movies)
     return render_template('search.html')
 
 if __name__ == "__main__":

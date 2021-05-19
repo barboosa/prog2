@@ -32,3 +32,14 @@ def save_movie(movie_create_data):
     movie_create_data["Id"] = new_id
     movies.append(movie_create_data)
     save(movies)
+
+
+def search_movie(search_inputs):
+    movies = load_movie_data()
+    filtered_movies = []
+    for key, value in search_inputs.items():
+        if search_inputs[key]:
+            for m in movies:
+                if value in m[key]:
+                    filtered_movies.append(m)
+    return filtered_movies

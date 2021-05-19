@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Filme{% endblock %}
 {% block content %}
     <h1>Filme</h1>
     {% if movies %}
@@ -22,15 +22,16 @@
         </tbody>
     </table>
    {% else %}
-    <p>Kein Eintrag vorhanden..</p>
+    <p>Kein Eintrag gefunden..</p>
    {% endif %}
     <a class="btn btn-primary" href="{{ url_for('movie_create')}}" role="button">Film erfassen</a>
     <script>
+        // For click on table row
         $(document).ready(function(){
-        $('table tr').click(function(){
-            window.location = $(this).attr('href');
-            return false;
+            $('table tr').click(function(){
+                window.location = $(this).attr('href');
+                return false;
+            });
         });
-    });
     </script>
 {% endblock %}
