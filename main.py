@@ -13,8 +13,10 @@ def movies():
     movies = mv.load_movie_data()
     return render_template('movies.html', movies=movies)
 
-@app.route('/movie/<movie_id>')
+@app.route('/movie/<movie_id>', methods=['GET', 'POST'])
 def movie_by_id(movie_id):
+    if request.method == 'POST':
+        return request.form.to_dict()
     movie = mv.load_movie_data_by_id(movie_id)
     return render_template('movie_details.html', movie=movie)
 
