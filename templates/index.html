@@ -1,5 +1,33 @@
 {% extends 'layout.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h1>Willkomen zu der Filmdatenbank.</h1>
+    <div class="row">
+        <div class="col">
+            <h4>Watchlist</h4>
+            {% if watchlist %}
+            <table class="table clickable-table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th width="250">Titel</th>
+                        <th>Handlung</th>
+                        <th>Release</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movie in watchlist %}
+                        <tr href="{{ url_for('movie_by_id', movie_id=movie.Id) }}">
+                            <td>{{ movie.Title }}</td>
+                            <td>{{ movie.Plot }}</td>
+                            <td>{{ movie.Year }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+           {% else %}
+            <p>Kein Film in der Watchlist</p>
+            {% endif %}
+        </div>
+        <div class="col">
+        </div>
+    </div>
 {% endblock %}

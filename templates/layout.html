@@ -37,6 +37,15 @@
         <main role="main" class="container custom-container-margin">
             {% block content %}{% endblock %}
         </main>
+        <script>
+            // For click on table row
+            $(document).ready(function(){
+                $('table tr').click(function(){
+                    window.location = $(this).attr('href');
+                    return false;
+                });
+            });
+        </script>
         <footer class="footer fixed-bottom bg-dark py-3">
             <div class="container">
                 <span class="text-muted">Webapp erstellt von Marco Barbosa.</span>

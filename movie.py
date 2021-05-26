@@ -1,5 +1,6 @@
 import json
 
+
 def save(data):
     with open('./data/movies.json', 'w') as json_file:
         json_dump = json.dumps(data)
@@ -13,6 +14,7 @@ def add_rating(movie_id, rating):
             ratings = m["Ratings"]
             ratings.append(rating)
     save(movies)
+
 
 def load_movie_data():
     try:
@@ -39,7 +41,7 @@ def save_movie(movie_create_data):
     movie_create_data["Id"] = new_id
     movie_create_data["Ratings"] = []
     movie_create_data["Watched"] = False
-    movie_create_data["Watchlist"] = True
+    movie_create_data["Watchlist"] = False
     movies.append(movie_create_data)
     save(movies)
 
@@ -53,3 +55,13 @@ def search_movie(search_inputs):
                 if value in m[key]:
                     filtered_movies.append(m)
     return filtered_movies
+
+
+def get_watchlist():
+    movies = load_movie_data()
+    watchlist = []
+    for m in movies:
+        if m["Watchlist"]:
+            for m in movies:
+                watchlist.append(m)
+    return watchlist

@@ -6,7 +6,8 @@ app = Flask("Movie Database")
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    watchlist = mv.get_watchlist()
+    return render_template('index.html', watchlist=watchlist)
 
 @app.route('/movies')
 def movies():
