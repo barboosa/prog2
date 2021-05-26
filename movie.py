@@ -1,11 +1,18 @@
 import json
 
-
 def save(data):
     with open('./data/movies.json', 'w') as json_file:
         json_dump = json.dumps(data)
         json_file.write(json_dump)
 
+
+def add_rating(movie_id, rating):
+    movies = load_movie_data()
+    for m in movies:
+        if m['Id'] == int(movie_id):
+            ratings = m["Ratings"]
+            ratings.append(rating)
+    save(movies)
 
 def load_movie_data():
     try:
@@ -30,6 +37,9 @@ def save_movie(movie_create_data):
     movies = load_movie_data()
     new_id = len(movies) + 1
     movie_create_data["Id"] = new_id
+    movie_create_data["Ratings"] = []
+    movie_create_data["Watched"] = False
+    movie_create_data["Watchlist"] = True
     movies.append(movie_create_data)
     save(movies)
 

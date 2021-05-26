@@ -15,9 +15,11 @@ def movies():
 
 @app.route('/movie/<movie_id>', methods=['GET', 'POST'])
 def movie_by_id(movie_id):
-    if request.method == 'POST':
-        return request.form.to_dict()
     movie = mv.load_movie_data_by_id(movie_id)
+    if request.method == 'POST':
+        rating = request.form.to_dict()
+        mv.add_rating(movie_id, rating)
+        return render_template('movie_details.html', movie=movie)
     return render_template('movie_details.html', movie=movie)
 
 @app.route('/movie/create', methods=['GET', 'POST'])

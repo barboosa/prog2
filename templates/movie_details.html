@@ -7,6 +7,14 @@
     <p><b>Director:</b> {{movie.Director}}</p>
     <p><b>Actors:</b> {{movie.Actors}}</p>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Bewerten</button>
+    {% for rating in movie.Ratings %}
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">Bewertung: {{ rating.Rating }}</h5>
+                <p class="card-text">{{ rating.Comment }}</p>
+            </div>
+        </div>
+    {% endfor %}
     <div class="modal fade" id="modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
