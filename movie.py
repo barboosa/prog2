@@ -71,10 +71,8 @@ def set_watchlist(movie_id):
     movies = load_movie_data()
     for movie in movies:
         if movie["Id"] == int(movie_id):
-            if movie["Watchlist"]:
-                movie["Watchlist"] = False
-            else:
-                movie["Watchlist"] = True
+            movie["Watchlist"] = not movie["Watchlist"]
+            break
     save(movies)
 
 
@@ -82,10 +80,8 @@ def set_watched(movie_id):
     movies = load_movie_data()
     for movie in movies:
         if movie["Id"] == int(movie_id):
-            if movie["Watched"]:
-                movie["Watched"] = False
-            else:
-                movie["Watched"] = True
+            movie["Watched"] = not movie["Watched"]
+            break
     save(movies)
 
 
