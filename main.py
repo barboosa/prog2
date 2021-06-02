@@ -31,6 +31,43 @@ def movie_create():
         return redirect(url_for('movies'))
     return render_template('movie_create.html')
 
+@app.route('/movie/<movie_id>/delete', methods=['GET', 'POST'])
+def movie_delete(movie_id):
+    movies = mv.load_movie_data()
+    if request.method == 'POST':
+        for i in range(len(movies)):
+            if movies[i]["Id"] == int(movie_id):
+                del movies[i]
+                break
+        mv.save(movies)
+        return redirect(url_for('movie_by_id'))
+
+@app.route('/movie/<movie_id>/watchlist', methods=['GET', 'POST'])
+def movie_watchlist(movie_id):
+    movies = mv.load_movie_data()
+    if request.method == 'POST':
+        for movie in movies:
+            if movie["Id"] == int(movie_id):
+                if movie["Watchlist"]:
+                    movie["Watchlist"] = False
+                else:
+                    movie["Watchlist"] = True
+        mv.save(movies)
+        return redirect(url_for('movie_by_id', movie_id=movie_id))
+
+@app.route('/movie/<movie_id>/watched', methods=['GET', 'POST'])
+def movie_watched(movie_id):
+    movies = mv.load_movie_data()
+    if request.method == 'POST':
+        for movie in movies:
+            if movie["Id"] == int(movie_id):
+                if movie["Watched"]:
+                    movie["Watched"] = False
+                else:
+                    movie["Watched"] = True
+        mv.save(movies)
+        return redirect(url_for('movie_by_id', movie_id=movie_id))
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
