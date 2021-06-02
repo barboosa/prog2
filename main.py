@@ -4,15 +4,24 @@ import movie as mv
 
 app = Flask("Movie Database")
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
     watchlist = mv.get_watchlist()
+    if request.method == 'POST':
+        movie_id = mv.get_movie_recommendation()
+        if movie_id:
+            return redirect(url_for('movie_by_id', movie_id=movie_id))
+        else:
+            return "Leider kein passender Vorschlag gefunden."
     return render_template('index.html', watchlist=watchlist)
+
 
 @app.route('/movies')
 def movies():
     movies = mv.load_movie_data()
     return render_template('movies.html', movies=movies)
+
 
 @app.route('/movie/<movie_id>', methods=['GET', 'POST'])
 def movie_by_id(movie_id):
@@ -23,6 +32,7 @@ def movie_by_id(movie_id):
         return redirect(url_for('movie_by_id', movie_id=movie_id))
     return render_template('movie_details.html', movie=movie)
 
+
 @app.route('/movie/create', methods=['GET', 'POST'])
 def movie_create():
     if request.method == 'POST':
@@ -31,11 +41,13 @@ def movie_create():
         return redirect(url_for('movies'))
     return render_template('movie_create.html')
 
+
 @app.route('/movie/<movie_id>/delete', methods=['GET', 'POST'])
 def movie_delete(movie_id):
     if request.method == 'POST':
         mv.delete_movie(movie_id)
         return redirect(url_for('movies'))
+
 
 @app.route('/movie/<movie_id>/watchlist', methods=['GET', 'POST'])
 def movie_watchlist(movie_id):
@@ -43,11 +55,13 @@ def movie_watchlist(movie_id):
         mv.set_watchlist(movie_id)
         return redirect(url_for('movie_by_id', movie_id=movie_id))
 
+
 @app.route('/movie/<movie_id>/watched', methods=['GET', 'POST'])
 def movie_watched(movie_id):
     if request.method == 'POST':
         mv.set_watched(movie_id)
         return redirect(url_for('movie_by_id', movie_id=movie_id))
+
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -56,6 +70,7 @@ def search():
         movies = mv.search_movie(search_inputs)
         return render_template('movies.html', movies=movies)
     return render_template('search.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
