@@ -65,3 +65,36 @@ def get_watchlist():
             for m in movies:
                 watchlist.append(m)
     return watchlist
+
+
+def set_watchlist(movie_id):
+    movies = load_movie_data()
+    for movie in movies:
+        if movie["Id"] == int(movie_id):
+            if movie["Watchlist"]:
+                movie["Watchlist"] = False
+            else:
+                movie["Watchlist"] = True
+    save(movies)
+
+
+def set_watched(movie_id):
+    movies = load_movie_data()
+    for movie in movies:
+        if movie["Id"] == int(movie_id):
+            if movie["Watched"]:
+                movie["Watched"] = False
+            else:
+                movie["Watched"] = True
+    save(movies)
+
+
+def delete_movie(movie_id):
+    movies = load_movie_data()
+    for i in range(len(movies)):
+        if movies[i]["Id"] == int(movie_id):
+            del movies[i]
+            break
+    save(movies)
+
+

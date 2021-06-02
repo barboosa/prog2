@@ -9,6 +9,8 @@
                 <th width="250">Titel</th>
                 <th>Handlung</th>
                 <th>Release</th>
+                <th width="30">Watchlist</th>
+                <th width="30">Gesehen</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +19,8 @@
                     <td>{{ movie.Title }}</td>
                     <td>{{ movie.Plot }}</td>
                     <td>{{ movie.Year }}</td>
+                    <td style="text-align: center;">{% if movie.Watchlist %} <img src="{{ url_for('static', filename='img/check.png') }}" width="20px"> {% else %}<img src="{{ url_for('static', filename='img/cross.png') }}" width="20px">{% endif %}</td>
+                    <td style="text-align: center;">{% if movie.Watched %} <img src="{{ url_for('static', filename='img/check.png') }}" width="20px"> {% else %}<img src="{{ url_for('static', filename='img/cross.png') }}" width="20px">{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>
