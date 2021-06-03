@@ -4,17 +4,17 @@
     <h1>{{movie.Title}} ({{movie.Year}})</h1>
     <span class="small text-muted">{{movie.Genre}}</span>
     <p class="mt-3">{{movie.Plot}}</p>
-    <p><b>Director:</b> {{movie.Director}}</p>
-    <p><b>Actors:</b> {{movie.Actors}}</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Bewerten</button>
-    <form style="display: inline;" method="post" action="/movie/{{ movie.Id }}/delete">
-        <button type="submit" class="btn btn-primary">Löschen</button>
-    </form>
+    <p><b>Regisseur:</b> {{movie.Director}}</p>
+    <p><b>Schauspieler:</b> {{movie.Actors}}</p>
     <form style="display: inline;" method="post" action="/movie/{{ movie.Id }}/watchlist">
         <button type="submit" class="btn btn-primary">{% if movie.Watchlist %}Aus Watchlist entfernen{% else %}Auf Watchlist{% endif %}</button>
     </form>
     <form style="display: inline;" method="post" action="/movie/{{ movie.Id }}/watched">
         <button type="submit" class="btn btn-primary">{% if movie.Watched %}Nicht gesehen{% else %}Gesehen{% endif %}</button>
+    </form>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Bewerten</button>
+    <form style="display: inline;" method="post" action="/movie/{{ movie.Id }}/delete">
+        <button type="submit" class="btn btn-primary">Löschen</button>
     </form>
 
     {% for rating in movie.Ratings %}
