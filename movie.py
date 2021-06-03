@@ -131,7 +131,8 @@ def get_movie_recommendation(genre):
                 else:
                     rl["AverageRating"] = 0
 
-            recommended_list = sorted(recommended_list, key=lambda k: k["AverageRating"], reverse=True)
+            # reverse für höchstes average rating zuerst, lambda: https://docs.python.org/3/howto/sorting.html (braucht es um key zu definieren nachdem sortiert wird)
+            recommended_list = sorted(recommended_list, key=lambda rl: rl["AverageRating"], reverse=True)
             return recommended_list[0]["Id"]
     else:
         return []
