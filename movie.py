@@ -95,38 +95,43 @@ def set_watched(movie_id):
 
 def delete_movie(movie_id):
     movies = load_movie_data()
-    for m in movies:
-        if m["Id"] == int(movie_id):
-            movies.remove(m)
-            break
-    save(movies)
+    # https://www.w3schools.com/python/python_lists_comprehension.asp (Comprehension anstatt for schleife mit append, alles was übereinstimmt mit if wird zur Liste hinzugefügt, Problem beim iterieren und gleichzeitigen löschen von liste)
+    data = [m for m in movies if m["Id"] != int(movie_id)]
+    save(data)
 
-def get_movie_recommendation():
+
+def get_movie_recommendation(genre):
     movies = load_movie_data()
     watchlist = get_watchlist()
     watched = get_watched_movies()
 
     if watchlist:
         recommended_list = watchlist
+        if genre:
+            recommended_list = [rl for rl in recommended_list if rl["Genre"] == genre]
     else:
         recommended_list = movies
+        if genre:
+            recommended_list = [rl for rl in recommended_list if genre and rl["Genre"] == genre]
 
     for w in watched:
         if w in recommended_list:
             recommended_list.remove(w)
 
     if recommended_list:
-        for rl in recommended_list:
-            if rl["Ratings"]:
-                rating_total = 0
-                for r in rl["Ratings"]:
-                    rating_total += float(r["Rating"])
-                rl["AverageRating"] = rating_total / len(rl["Ratings"])
-            else:
-                rl["AverageRating"] = 0
+        if len(recommended_list) == 1:
+            return recommended_list[0]["Id"]
+        else:
+            for rl in recommended_list:
+                if rl["Ratings"]:
+                    rating_total = 0
+                    for r in rl["Ratings"]:
+                        rating_total += float(r["Rating"])
+                    rl["AverageRating"] = rating_total / len(rl["Ratings"])
+                else:
+                    rl["AverageRating"] = 0
 
-        recommended_list = sorted(recommended_list, key=lambda k: k["AverageRating"], reverse=True)
-        return recommended_list[0]["Id"]
+            recommended_list = sorted(recommended_list, key=lambda k: k["AverageRating"], reverse=True)
+            return recommended_list[0]["Id"]
     else:
         return []
-

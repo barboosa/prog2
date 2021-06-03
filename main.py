@@ -9,7 +9,8 @@ app = Flask("Movie Database")
 def index():
     watchlist = mv.get_watchlist()
     if request.method == 'POST':
-        movie_id = mv.get_movie_recommendation()
+        inputs = request.form.to_dict()
+        movie_id = mv.get_movie_recommendation(inputs["Genre"])
         if movie_id:
             return redirect(url_for('movie_by_id', movie_id=movie_id))
         else:

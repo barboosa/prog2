@@ -6,6 +6,7 @@
     <table class="table clickable-table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
             <tr>
+                <th width="30">ID</th>
                 <th width="250">Titel</th>
                 <th>Handlung</th>
                 <th>Release</th>
@@ -16,6 +17,7 @@
         <tbody>
             {% for movie in movies %}
                 <tr href="{{ url_for('movie_by_id', movie_id=movie.Id) }}">
+                    <td>{{ movie.Id }}</td>
                     <td>{{ movie.Title }}</td>
                     <td>{{ movie.Plot }}</td>
                     <td>{{ movie.Year }}</td>

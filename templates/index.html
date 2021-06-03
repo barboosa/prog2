@@ -27,10 +27,19 @@
             <p>Kein Film in der Watchlist</p>
             {% endif %}
         </div>
+        <div class="col">
+            <h4>Filmvorschlag</h4>
+            <p>Bitte Genre angeben, du erhälst danach einen Filmvorschlag basierend auf deiner Filmdatenbank.</p>
+            <form method="post">
+                <div class="form-group">
+                    <label for="Genre">Genre (optional)</label>
+                    <input type="text" class="form-control" id="Genre" name="Genre">
+                </div>
+                <button type="submit" class="btn btn-primary">Mach mir einen Vorschlag!</button>
+            </form>
+        </div>
     </div>
     <div style="text-align: center">
-        <form style="display: inline;" method="post">
-            <button type="submit" class="btn btn-primary" style="width: 400px; height: 100px; font-size: 30px">Filmvorschlag</button>
-        </form>
+
     </div>
 {% endblock %}
