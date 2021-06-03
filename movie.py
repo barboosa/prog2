@@ -43,7 +43,7 @@ def search_movie(search_inputs):
     for key, value in search_inputs.items():
         if search_inputs[key]:
             for m in movies:
-                if value in m[key]:
+                if value.lower() in m[key].lower():
                     filtered_movies.append(m)
     return filtered_movies
 
@@ -108,11 +108,11 @@ def get_movie_recommendation(genre):
     if watchlist:
         recommended_list = watchlist
         if genre:
-            recommended_list = [rl for rl in recommended_list if rl["Genre"] == genre]
+            recommended_list = [rl for rl in recommended_list if rl["Genre"].lower() == genre.lower()]
     else:
         recommended_list = movies
         if genre:
-            recommended_list = [rl for rl in recommended_list if genre and rl["Genre"] == genre]
+            recommended_list = [rl for rl in recommended_list if rl["Genre"].lower() == genre.lower()]
 
     for w in watched:
         if w in recommended_list:
