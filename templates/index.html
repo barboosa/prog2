@@ -27,6 +27,8 @@
             <p>Kein Film in der Watchlist</p>
             {% endif %}
         </div>
+    </div>
+    <div class="row mt-5">
         <div class="col">
             <h4>Filmvorschlag</h4>
             <p>Bitte Genre angeben, du erhälst danach einen Filmvorschlag basierend auf deiner Filmdatenbank.</p>
@@ -39,7 +41,10 @@
             </form>
         </div>
     </div>
-    <div style="text-align: center">
-
+    <div class="row mt-5">
+        <div class="col">
+            <h4>Erfasste Filmkategorien</h4>
+            <div>{{ viz_div | safe }}</div>
+        </div>
     </div>
 {% endblock %}

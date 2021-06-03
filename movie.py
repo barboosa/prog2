@@ -1,4 +1,6 @@
 import json
+import plotly.graph_objects as go
+from plotly.offline import plot
 
 
 def load_movie_data():
@@ -136,3 +138,23 @@ def get_movie_recommendation(genre):
             return recommended_list[0]["Id"]
     else:
         return []
+
+
+def viz():
+    movies = load_movie_data()
+    labels = []
+    values = []
+    count = {}
+    for m in movies:
+        if m["Genre"] not in count:
+            count[m["Genre"]] = 1
+        else:
+            count[m["Genre"]] += 1
+
+    for key, value in count.items():
+        labels.append(key)
+        values.append(value)
+
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    div = plot(fig, output_type="div")
+    return div

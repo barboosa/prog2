@@ -5,9 +5,11 @@ import movie as mv
 app = Flask("Movie Database")
 
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     watchlist = mv.get_watchlist()
+    viz_div = mv.viz()
     if request.method == 'POST':
         inputs = request.form.to_dict()
         movie_id = mv.get_movie_recommendation(inputs["Genre"])
@@ -15,7 +17,7 @@ def index():
             return redirect(url_for('movie_by_id', movie_id=movie_id))
         else:
             return "Leider kein passender Vorschlag gefunden."
-    return render_template('index.html', watchlist=watchlist)
+    return render_template('index.html', watchlist=watchlist, viz_div=viz_div)
 
 
 @app.route('/movies')
