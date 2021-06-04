@@ -2,6 +2,8 @@
 ## Ausgangslage
 Im Modul PROG2 soll eine Webapplikation mit Python (Jinja und Flask) im Verlauf des Semesters umgesetzt. Diese Webapplikation soll eine Filmdatenbank sein, in welcher verschiedene Filme erfasst und bewertet werden können. Zudem soll es möglich sein an einem Abend in welchem man einen Film schauen will sich aber nicht entscheiden kann, ein Film von der Webapp vorschlagen zu lassen, priorisiert nach verschiedenen Kriterien.
 
+![Home Page](/doc/home_page.png)
+
 ## Funktionen
 Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
 * Erfassen von Filme in der Datenbank
@@ -13,7 +15,8 @@ Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
 
 
 ## Workflow
-### Dateneingabe
+### Film erfassen
+![Film erfassen Flowchart](/doc/flow_create_movie.png)
 
 ### Datenverarbeitung/Speicherung
 
