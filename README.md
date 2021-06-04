@@ -18,9 +18,11 @@ Es soll eine Filmdatenbank erstellt werden mit folgenden Funktionalitäten:
 ### Film erfassen
 ![Film erfassen Flowchart](/doc/flow_create_movie.png)
 
-### Datenverarbeitung/Speicherung
+### Filmsuche
+![Film suchen Flowchart](/doc/flow_search.png)
 
-### Datenausgabe
+### Filmvorschlag
+![Filmvorschlag Flowchart](/doc/flow_recommendation.png)
 
 ## Requirements und Ausführung
 Umgesetzt mit Python Version 3.9
