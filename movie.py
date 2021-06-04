@@ -46,7 +46,8 @@ def search_movie(search_inputs):
         if search_inputs[key]:
             for m in movies:
                 if value.lower() in m[key].lower():
-                    filtered_movies.append(m)
+                    if m not in filtered_movies:
+                        filtered_movies.append(m)
     return filtered_movies
 
 
