@@ -110,13 +110,10 @@ def get_movie_recommendation(genre):
 
     if watchlist:
         recommended_list = watchlist
-        if genre:
-            recommended_list = [rl for rl in recommended_list if rl["Genre"].lower() == genre.lower()]
     else:
         recommended_list = movies
-        if genre:
-            recommended_list = [rl for rl in recommended_list if rl["Genre"].lower() == genre.lower()]
-
+    if genre:
+        recommended_list = [rl for rl in recommended_list if rl["Genre"].lower() == genre.lower()]
     for w in watched:
         if w in recommended_list:
             recommended_list.remove(w)
